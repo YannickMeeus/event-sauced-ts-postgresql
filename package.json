@@ -1,0 +1,127 @@
+{
+  "name": "event-sauced-postgresql",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [
+    "Event Store",
+    "Event Sourcing",
+    "CQRS",
+    "Command",
+    "Query",
+    "Multi-database"
+  ],
+  "main": "dist/event-sauced-postgresql.umd.js",
+  "module": "dist/event-sauced-postgresql.es5.js",
+  "typings": "dist/types/event-sauced-postgresql.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Yannick Meeus <yannick.meeus@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "nps",
+    "test": "nps test",
+    "commit": "git-cz"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverage": false
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.4",
+    "@types/node": "^11.9.5",
+    "@types/uuid": "^3.4.3",
+    "colors": "^1.1.2",
+    "commitizen": "^3.0.4",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.0.1",
+    "cz-conventional-changelog": "^2.0.0",
+    "event-stream": "3.3.4",
+    "greenkeeper-lockfile": "^1.15.1",
+    "husky": "^1.0.0",
+    "jest": "24.0.0",
+    "lint-staged": "^8.0.5",
+    "lodash": "4.17.11",
+    "nps": "5.9.5",
+    "nps-utils": "1.7.0",
+    "prettier": "^1.13.7",
+    "prompt": "^1.0.0",
+    "replace-in-file": "^3.0.0-beta.2",
+    "rimraf": "^2.6.1",
+    "rollup": "^1.1.0",
+    "rollup-plugin-commonjs": "^9.0.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.19.0",
+    "semantic-release": "15.13.3",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.2",
+    "tslint": "5.12.1",
+    "tslint-config-prettier": "^1.1.0",
+    "tslint-config-standard": "^8.0.0",
+    "typedoc": "^0.14.0",
+    "typescript": "^3.1.6",
+    "uuid": "^3.3.2",
+    "validate-commit-msg": "^2.12.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg",
+      "pre-push": "npm start prerequisites && npm start build",
+      "pre-commit": "lint-staged"
+    }
+  }
+}
