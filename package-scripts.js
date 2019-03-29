@@ -7,6 +7,10 @@ module.exports = {
       lint: 'tslint -t codeFrame \'src/**/*.ts\' \'test/**/*.ts\' -p .',
       build: 'rimraf dist',
     },
+    database: {
+      default: 'docker-compose -f ./tools/postgres-compose.yml up',
+      teardown: 'docker-compose -f ./tools/postgres-compose.yml down'
+    },
     build: {
       default: series('build.transpile', 'build.package'),
       transpile: 'tsc --module commonjs',
