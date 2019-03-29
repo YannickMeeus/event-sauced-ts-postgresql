@@ -27,6 +27,9 @@
     "test": "nps test",
     "commit": "git-cz"
   },
+  "dependencies": {
+    "@make-stuff-work/event-sauced": "^1.0.1"
+  },
   "lint-staged": {
     "{src,test}/**/*.ts": [
       "prettier --write",
@@ -123,8 +126,5 @@
       "pre-push": "npm start prerequisites && npm start build",
       "pre-commit": "lint-staged"
     }
-  },
-  "dependencies": {
-    "@make-stuff-work/event-sauced": "^1.0.1"
   }
 }
