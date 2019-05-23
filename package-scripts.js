@@ -4,8 +4,8 @@ module.exports = {
   scripts: {
     prerequisites: {
       default: concurrently('prerequisites.lint', 'prerequisites.build'),
-      lint: 'tslint -t codeFrame \'src/**/*.ts\' \'test/**/*.ts\' -p .',
-      build: 'rimraf dist',
+      lint: "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts' -p .",
+      build: 'rimraf dist'
     },
     database: {
       default: 'docker-compose -f ./tools/postgres-compose.yml up',
@@ -23,7 +23,7 @@ module.exports = {
     },
     publish: {
       default: 'semantic-release',
-      dryrun: 'node-env-run -E ./secrets/publishing.env --exec \'semantic-release --dry-run',
+      dryrun: "node-env-run -E ./secrets/publishing.env --exec 'semantic-release --dry-run",
       prepare: 'ts-node tools/semantic-release-prepare.ts'
     },
     coverage: {
@@ -34,7 +34,7 @@ module.exports = {
     default: 'rollup -c rollup.config.ts -w',
     test: {
       default: 'jest',
-      watch: 'jest --watch',
+      watch: 'jest --watch'
     }
   }
-};
+}
