@@ -16,11 +16,6 @@ module.exports = {
       transpile: 'tsc --module commonjs',
       package: 'rollup -c rollup.config.ts'
     },
-    documentation: {
-      default: series('documentation.generate', 'documentation.deploy'),
-      generate: 'typedoc --out docs --target es6 --theme minimal --mode file src',
-      deploy: 'ts-node tools/gh-pages-publish'
-    },
     publish: {
       default: 'semantic-release',
       dryrun: "node-env-run -E ./secrets/publishing.env --exec 'semantic-release --dry-run",
@@ -35,6 +30,13 @@ module.exports = {
     test: {
       default: 'jest',
       watch: 'jest --watch'
+    },
+    maintenance: {
+      default: series('maintenance.update_dependencies'),
+      update_dependencies: {
+        default: 'ncu',
+        interactive: 'ncu -i -u'
+      }
     }
   }
 }
