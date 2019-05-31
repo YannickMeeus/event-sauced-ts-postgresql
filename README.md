@@ -24,8 +24,20 @@ with a plan to move to GitHub actions when it either comes out of public beta or
 
 ## Code style
 
-TODO
-Add details about the coding style (ie. prettier setup etc)
+I'm using a combination of [Prettier](https://prettier.io/), [Husky](https://github.com/typicode/husky),
+[Lint-Staged](https://github.com/okonet/lint-staged) and finally [TSLint](https://palantir.github.io/tslint/).
+
+It's a set-up that I'm borrowing from [Alex Jover](https://github.com/alexjoverm)'s amazing
+[Typescript Library Starter](https://github.com/alexjoverm/typescript-library-starter), and it's working a treat.
+
+There are two levels of linting happening, _Code Style_ and _Static Analysis_.
+The former will be done as a Git pre-commit hook (courtesy of Husky) on only staged files for speed (courtesy of Lint-Staged),
+and will automatically format the code (courtesy of Prettier).
+
+The actual Static Analysis will be triggered as part of a Git pre-push hook, as it's generally a more expensive operation, and I don't want to be
+bothered _all_ the time, as long as I get bothered before I actually push to my remotes.
+
+You can find more on this in `package.json`.
 
 ## Runtime Dependencies
 
