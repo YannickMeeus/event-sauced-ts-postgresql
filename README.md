@@ -1,5 +1,5 @@
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/YannickMeeus/event-sauced-ts-postgresql.svg)](https://greenkeeper.io/)
+
 
 # Event-Sauced - PostgreSQL Engine
 
@@ -17,7 +17,7 @@ And one of those seems to be PostgreSQL, so let's get started!
 
 ## Build status - CircleCI
 
-![CircleCI](https://img.shields.io/circleci/build/github/YannickMeeus/event-sauced-ts-postgresql.svg?style=for-the-badge)
+[![CircleCI](https://img.shields.io/circleci/build/gh/YannickMeeus/event-sauced-ts-postgresql.svg?style=flat-square)](https://circleci.com/gh/YannickMeeus/event-sauced-ts-postgresql)
 
 I'm currently orchestrating everything using [CircleCI](https://circleci.com/gh/YannickMeeus/event-sauced-ts-postgresql),
 with a plan to move to GitHub actions when it either comes out of public beta or I enter (🙏) into the public beta.
@@ -39,7 +39,24 @@ bothered _all_ the time, as long as I get bothered before I actually push to my 
 
 You can find more on this in `package.json`.
 
-## Runtime Dependencies
+## Dependencies - Runtime & Otherwise
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/YannickMeeus/event-sauced-ts-postgresql.svg?style=flat-square)](https://greenkeeper.io/)
+
+Dependency versioning is managed in two ways:
+
+1. Automated - via [Greenkeeper](https://greenkeeper.io/)
+2. Manual - `npm start maintenance.update_dependencies.interactive` - This will run `npm-check-updates` and guide you through an update.
+
+You can get a dry-run maintenance run using just `npm start maintenance`.
+
+### Dependency Philosophy
+
+I like to keep the run-time dependency **count** to a bare minimum. This means that - in this case - I'll be fighting tooth and nail to keep the
+runtime dependencies to **2**:
+
+1. the core `event-sauced` library
+2. `pg`
 
 ## Frameworks
 
