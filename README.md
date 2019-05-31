@@ -18,6 +18,7 @@ And one of those seems to be PostgreSQL, so let's get started!
 ## Build status - CircleCI
 
 ![CircleCI](https://img.shields.io/circleci/build/github/YannickMeeus/event-sauced-ts-postgresql.svg?style=for-the-badge)
+
 I'm currently orchestrating everything using [CircleCI](https://circleci.com/gh/YannickMeeus/event-sauced-ts-postgresql),
 with a plan to move to GitHub actions when it either comes out of public beta or I enter (🙏) into the public beta.
 
