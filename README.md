@@ -27,3 +27,18 @@ with a plan to move to GitHub actions when it either comes out of public beta or
 TODO
 Add details about the coding style (ie. prettier setup etc)
 
+## Runtime Dependencies
+
+## Frameworks
+
+## Code Example
+
+## Installation
+
+## Tests
+
+## Contribute
+
+## Credits
+
+## License
