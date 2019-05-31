@@ -22,3 +22,8 @@ And one of those seems to be PostgreSQL, so let's get started!
 I'm currently orchestrating everything using [CircleCI](https://circleci.com/gh/YannickMeeus/event-sauced-ts-postgresql),
 with a plan to move to GitHub actions when it either comes out of public beta or I enter (🙏) into the public beta.
 
+## Code style
+
+TODO
+Add details about the coding style (ie. prettier setup etc)
+
