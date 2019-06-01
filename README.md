@@ -24,7 +24,7 @@ with a plan to move to GitHub actions when it either comes out of public beta or
 
 ## Code style
 
-@TODO - Add fancy shiny shield icons here
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 I'm using a combination of [Prettier](https://prettier.io/), [Husky](https://github.com/typicode/husky),
 [Lint-Staged](https://github.com/okonet/lint-staged) and finally [TSLint](https://palantir.github.io/tslint/).
