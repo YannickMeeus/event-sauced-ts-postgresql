@@ -1,2 +1,101 @@
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/YannickMeeus/event-sauced-ts-postgresql.svg)](https://greenkeeper.io/)
+
+
+# Event-Sauced - PostgreSQL Engine
+
+Welcome to the PostgreSQL engine for [Event-Sauced](https://github.com/YannickMeeus/event-sauced-ts).
+As this is a component library, I would recommend readers to go check out the main library for
+and overview of what Event Sauced is meant to be.
+
+## Motivation
+
+I like learning about databases, what they can - and more importantly - what they can not do.
+This lead me to try and implement an opinionated, but quite thin - event sourcing framework
+on top of the world's more popular databases.
+
+And one of those seems to be PostgreSQL, so let's get started!
+
+## Build status - CircleCI
+
+[![CircleCI](https://img.shields.io/circleci/build/gh/YannickMeeus/event-sauced-ts-postgresql.svg?style=flat-square)](https://circleci.com/gh/YannickMeeus/event-sauced-ts-postgresql)
+
+I'm currently orchestrating everything using [CircleCI](https://circleci.com/gh/YannickMeeus/event-sauced-ts-postgresql),
+with a plan to move to GitHub actions when it either comes out of public beta or I enter (🙏) into the public beta.
+
+## Code style
+
+@TODO - Add fancy shiny shield icons here
+
+I'm using a combination of [Prettier](https://prettier.io/), [Husky](https://github.com/typicode/husky),
+[Lint-Staged](https://github.com/okonet/lint-staged) and finally [TSLint](https://palantir.github.io/tslint/).
+
+It's a set-up that I'm borrowing from [Alex Jover](https://github.com/alexjoverm)'s amazing
+[Typescript Library Starter](https://github.com/alexjoverm/typescript-library-starter), and it's working a treat.
+
+There are two levels of linting happening, _Code Style_ and _Static Analysis_.
+The former will be applied as a Git pre-commit hook (courtesy of Husky) on only staged files for speed (courtesy of Lint-Staged),
+and will automatically format the code (courtesy of Prettier).
+
+The latter linter step - making use of more in-depth static analysis information -  will be triggered as part of a Git pre-push hook, as it's generally a more expensive operation, and I don't want to be
+bothered _all_ the time, as long as I get bothered before I actually push to my remotes.
+
+You can find more on this in `package.json`.
+
+## Dependencies - Runtime & Otherwise
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/YannickMeeus/event-sauced-ts-postgresql.svg?style=flat-square)](https://greenkeeper.io/)
+@TODO - Add fancy shiny shield icons here for dependencies being up to date
+### Dependency Philosophy
+
+
+
+I like to keep the run-time dependency **count** to a bare minimum. This means that - in this case - I'll be fighting tooth and nail to keep the
+runtime dependencies to **2**:
+
+1. the core [event-sauced](https://github.com/YannickMeeus/event-sauced-ts) library
+2. [pg](https://node-postgres.com/) - Incredibly stable PostgreSQL library for Node.js
+
+### Versioning
+Dependency versioning is managed in two ways:
+
+1. Automated - via [Greenkeeper](https://greenkeeper.io/)
+2. Manual - `npm start maintenance.update_dependencies.interactive` - This will run `npm-check-updates` and guide you through an update.
+
+You can perform a maintenance dry-run using just `npm start maintenance`.
+
+## Frameworks/Tech Used
+
+- Node.js
+- [Typescript](https://www.typescriptlang.org/) - Type all the things
+- [Rollup](https://rollupjs.org/) - Package all the things
+- [Jest](https://jestjs.io/) - Test all the things
+- [Wallaby](https://wallabyjs.com/) - Test all the things RIGHT NOW
+- [Visual Studio Code](https://code.visualstudio.com/) - Write..all the things??
+
+That's probably it for now.
+
+## Code Example
+
+@TODO - Fill this in once there's some code to examplify.
+
+## Installation
+
+@TODO - Fill this in once there's some package to install.
+
+## Tests
+
+@TODO - Fill this in (there's a pattern here, it's subtle though) once there's something to test.
+
+## Contribute
+
+@TODO - Set up contributers agreement
+
+## Credits
+
+@TODO - Fill this in once you remember who all to thank
+
+## License
+
+![GitHub](https://img.shields.io/github/license/yannickmeeus/event-sauced-ts-postgresql.svg?logoColor=brightgreen&style=flat-square)
+
+copyright © 2017-2019 YannickMeeus
