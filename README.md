@@ -24,6 +24,8 @@ with a plan to move to GitHub actions when it either comes out of public beta or
 
 ## Code style
 
+@TODO - Add fancy shiny shield icons here
+
 I'm using a combination of [Prettier](https://prettier.io/), [Husky](https://github.com/typicode/husky),
 [Lint-Staged](https://github.com/okonet/lint-staged) and finally [TSLint](https://palantir.github.io/tslint/).
 
@@ -42,14 +44,16 @@ You can find more on this in `package.json`.
 ## Dependencies - Runtime & Otherwise
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/YannickMeeus/event-sauced-ts-postgresql.svg?style=flat-square)](https://greenkeeper.io/)
-
+@TODO - Add fancy shiny shield icons here for dependencies being up to date
 ### Dependency Philosophy
+
+
 
 I like to keep the run-time dependency **count** to a bare minimum. This means that - in this case - I'll be fighting tooth and nail to keep the
 runtime dependencies to **2**:
 
-1. the core `event-sauced` library
-2. `pg`
+1. the core [event-sauced](https://github.com/YannickMeeus/event-sauced-ts) library
+2. [pg](https://node-postgres.com/) - Incredibly stable PostgreSQL library for Node.js
 
 ### Versioning
 Dependency versioning is managed in two ways:
@@ -59,16 +63,39 @@ Dependency versioning is managed in two ways:
 
 You can perform a maintenance dry-run using just `npm start maintenance`.
 
-## Frameworks
+## Frameworks/Tech Used
+
+- Node.js
+- [Typescript](https://www.typescriptlang.org/) - Type all the things
+- [Rollup](https://rollupjs.org/) - Package all the things
+- [Jest](https://jestjs.io/) - Test all the things
+- [Wallaby](https://wallabyjs.com/) - Test all the things RIGHT NOW
+- [Visual Studio Code](https://code.visualstudio.com/) - Write..all the things??
+
+That's probably it for now.
 
 ## Code Example
 
+@TODO - Fill this in once there's some code to examplify.
+
 ## Installation
+
+@TODO - Fill this in once there's some package to install.
 
 ## Tests
 
+@TODO - Fill this in (there's a pattern here, it's subtle though) once there's something to test.
+
 ## Contribute
+
+@TODO - Set up contributers agreement
 
 ## Credits
 
+@TODO - Fill this in once you remember who all to thank
+
 ## License
+
+![GitHub](https://img.shields.io/github/license/yannickmeeus/event-sauced-ts-postgresql.svg?logoColor=brightgreen&style=flat-square)
+
+copyright © 2017-2019 YannickMeeus
