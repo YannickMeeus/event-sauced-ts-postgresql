@@ -24,7 +24,7 @@ with a plan to move to GitHub actions when it either comes out of public beta or
 
 ## Code style
 
-@TODO - Add fancy shiny shield icons here
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 I'm using a combination of [Prettier](https://prettier.io/), [Husky](https://github.com/typicode/husky),
 [Lint-Staged](https://github.com/okonet/lint-staged) and finally [TSLint](https://palantir.github.io/tslint/).
@@ -44,10 +44,9 @@ You can find more on this in `package.json`.
 ## Dependencies - Runtime & Otherwise
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/YannickMeeus/event-sauced-ts-postgresql.svg?style=flat-square)](https://greenkeeper.io/)
-@TODO - Add fancy shiny shield icons here for dependencies being up to date
+[![Dependencies](https://david-dm.org/yannickmeeus/event-sauced-ts-postgresql.svg)](https://david-dm.org/yannickmeeus/event-sauced-ts-postgresql)
+[![DevDependencies](https://david-dm.org/yannickmeeus/event-sauced-ts-postgresql/dev-status.svg)](https://david-dm.org/yannickmeeus/event-sauced-ts-postgresql)
 ### Dependency Philosophy
-
-
 
 I like to keep the run-time dependency **count** to a bare minimum. This means that - in this case - I'll be fighting tooth and nail to keep the
 runtime dependencies to **2**:
