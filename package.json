@@ -81,7 +81,7 @@
     ]
   },
   "dependencies": {
-    "@make-stuff-work/event-sauced": "^1.0.1",
+    "@make-stuff-work/event-sauced": "^1.1.1",
     "pg": "7.9.0"
   },
   "devDependencies": {
