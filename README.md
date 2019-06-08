@@ -1,11 +1,8 @@
-
-
-
 # Event-Sauced - PostgreSQL Engine
 
 Welcome to the PostgreSQL engine for [Event-Sauced](https://github.com/YannickMeeus/event-sauced-ts).
 As this is a component library, I would recommend readers to go check out the main library for
-and overview of what Event Sauced is meant to be.
+an overview of what Event Sauced is meant to be.
 
 ## Motivation
 
