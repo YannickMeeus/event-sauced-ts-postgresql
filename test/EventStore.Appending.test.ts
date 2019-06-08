@@ -1,7 +1,4 @@
-import { v4 as newGuid } from 'uuid'
 import { PostgreSQLStorageEngine } from '../src/PostgreSQLStorageEngine'
-import { IStorageEngine, EventStore, EventData, EventStorage } from '@make-stuff-work/event-sauced'
-import { OrderCreated } from './Events/OrderCreated'
 
 describe('Given a set of engines to test against', () => {
   const engine = new PostgreSQLStorageEngine({
@@ -11,10 +8,13 @@ describe('Given a set of engines to test against', () => {
     port: 5432
   })
 
+  afterAll(async () => {
+    await engine.terminate()
+  })
+
   describe('When a new database needs to be prepared', () => {
     it('It should initialize without any issues', async () => {
       await expect(engine.initialise()).resolves.not.toBeUndefined()
-      await engine.dispose()
     })
   })
 })

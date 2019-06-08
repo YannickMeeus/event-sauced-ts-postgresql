@@ -37,7 +37,7 @@ COMMIT;
     return this
   }
 
-  public async dispose(): Promise<void> {
+  public async terminate(): Promise<void> {
     await this.pool.end()
   }
 
