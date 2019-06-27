@@ -19,7 +19,7 @@
   "author": "Yannick Meeus <yannick.meeus@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/YannickMeeus/event-sauced-ts-postgresql"
   },
   "license": "MIT",
   "scripts": {
