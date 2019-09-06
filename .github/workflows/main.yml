@@ -1,0 +1,47 @@
+name: Verify (Build & Test), Package and Deploy if applicable
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Print GitHub Context # Debug step
+        if: true == false
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: Set Node LTS
+        uses: actions/setup-node@master
+        with:
+          version: 10.x
+
+      - run:
+          name: Pull the relevant docker images
+          command: docker pull postgres:11-alpine
+
+      - name: Install all dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm start prerequisites.lint
+
+      - name: Run All Tests (There's a bunch of integration tests in here)
+        run: npm test
+
+      - name: Remove output folder if one exists
+        run: npm start prerequisites.build
+
+      - name: Transpile and package up the library
+        run: npm start build
+
+      # - name: Publish to NPM
+      #   if: endsWith(github.ref, 'master')
+      #   run: npm start publish
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
