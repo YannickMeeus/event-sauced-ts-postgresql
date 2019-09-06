@@ -40,7 +40,7 @@ jobs:
 
       - name: Publish to NPM
         if: endsWith(github.ref, 'master')
-        run: npm start publish
+        run: npm start publish.ciDryrun
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
