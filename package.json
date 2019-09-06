@@ -1,6 +1,6 @@
 {
   "name": "event-sauced-postgresql",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "",
   "keywords": [
     "Event Store",
@@ -19,13 +19,14 @@
   "author": "Yannick Meeus <yannick.meeus@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YannickMeeus/event-sauced-ts-postgresq"
+    "url": "https://github.com/YannickMeeus/event-sauced-ts-postgresql"
   },
   "license": "MIT",
   "scripts": {
     "start": "nps",
     "test": "nps test",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
