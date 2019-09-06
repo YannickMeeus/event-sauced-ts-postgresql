@@ -20,9 +20,8 @@ jobs:
         with:
           version: 10.x
 
-      - run:
-          name: Pull the relevant docker images
-          command: docker pull postgres:11-alpine
+      - name: Pull the relevant docker images
+        run: docker pull postgres:11-alpine
 
       - name: Install all dependencies
         run: npm ci
@@ -38,7 +37,6 @@ jobs:
 
       - name: Transpile and package up the library
         run: npm start build
-
       # - name: Publish to NPM
       #   if: endsWith(github.ref, 'master')
       #   run: npm start publish
