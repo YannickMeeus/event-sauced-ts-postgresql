@@ -18,6 +18,7 @@ module.exports = {
     },
     publish: {
       default: 'semantic-release',
+      ciDryrun: 'semantic-release --dry-run',
       dryrun: "node-env-run -E ./secrets/publishing.env --exec 'semantic-release --dry-run",
       prepare: 'ts-node tools/semantic-release-prepare.ts'
     },
