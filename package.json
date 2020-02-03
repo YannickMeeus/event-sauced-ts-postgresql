@@ -85,7 +85,7 @@
     "pg": "7.12.1"
   },
   "devDependencies": {
-    "@types/jest": "24.0.18",
+    "@types/jest": "24.9.1",
     "@types/node": "12.12.5",
     "@types/pg": "7.11.2",
     "@types/uuid": "3.4.6",
