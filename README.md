@@ -12,12 +12,12 @@ on top of the world's more popular databases.
 
 And one of those seems to be PostgreSQL, so let's get started!
 
-## Build status - CircleCI
+## Build status - Github Actions
 
-[![CircleCI](https://img.shields.io/circleci/build/gh/YannickMeeus/event-sauced-ts-postgresql.svg?style=flat-square)](https://circleci.com/gh/YannickMeeus/event-sauced-ts-postgresql)
+[![Build Status](https://github.com/YannickMeeus/event-sauced-ts-postgresql/workflows/Verify%20(Build%20&%20Test),%20Package%20and%20Deploy%20if%20applicable/badge.svg)](https://github.com/YannickMeeus/event-sauced-ts-postgresql/actions)
 
-I'm currently orchestrating everything using [CircleCI](https://circleci.com/gh/YannickMeeus/event-sauced-ts-postgresql),
-with a plan to move to GitHub actions when it either comes out of public beta or I enter (🙏) into the public beta.
+I'm currently orchestrating everything using [Github Actions](https://github.com/YannickMeeus/event-sauced-ts-postgresql/actions).
+It is fun, there's a bunch of goodies to be had for free, and it keeps stuff well within GitHub.
 
 ## Code style
 
@@ -33,16 +33,16 @@ There are two levels of linting happening, _Code Style_ and _Static Analysis_.
 The former will be applied as a Git pre-commit hook (courtesy of Husky) on only staged files for speed (courtesy of Lint-Staged),
 and will automatically format the code (courtesy of Prettier).
 
-The latter linter step - making use of more in-depth static analysis information -  will be triggered as part of a Git pre-push hook, as it's generally a more expensive operation, and I don't want to be
+The latter linter step - making use of more in-depth static analysis information - will be triggered as part of a Git pre-push hook, as it's generally a more expensive operation, and I don't want to be
 bothered _all_ the time, as long as I get bothered before I actually push to my remotes.
 
 You can find more on this in `package.json`.
 
 ## Dependencies - Runtime & Otherwise
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/YannickMeeus/event-sauced-ts-postgresql.svg?style=flat-square)](https://greenkeeper.io/)
 [![Dependencies](https://david-dm.org/yannickmeeus/event-sauced-ts-postgresql.svg)](https://david-dm.org/yannickmeeus/event-sauced-ts-postgresql)
 [![DevDependencies](https://david-dm.org/yannickmeeus/event-sauced-ts-postgresql/dev-status.svg)](https://david-dm.org/yannickmeeus/event-sauced-ts-postgresql)
+
 ### Dependency Philosophy
 
 I like to keep the run-time dependency **count** to a bare minimum. This means that - in this case - I'll be fighting tooth and nail to keep the
@@ -52,9 +52,10 @@ runtime dependencies to **2**:
 2. [pg](https://node-postgres.com/) - Incredibly stable PostgreSQL library for Node.js
 
 ### Versioning
+
 Dependency versioning is managed in two ways:
 
-1. Automated - via [Greenkeeper](https://greenkeeper.io/)
+1. Automated - via [Renovate](https://renovate.whitesourcesoftware.com/)
 2. Manual - `npm start maintenance.update_dependencies.interactive` - This will run `npm-check-updates` and guide you through an update.
 
 You can perform a maintenance dry-run using just `npm start maintenance`.
