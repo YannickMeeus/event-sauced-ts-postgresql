@@ -15,7 +15,7 @@ let engine: PostgreSQLStorageEngine
 describe('Given a configured PostgreSQLStorageEngine', () => {
   beforeAll(async () => {
     // create container
-    establishedContainer = await new GenericContainer('postgres', '11-alpine')
+    establishedContainer = await new GenericContainer('postgres', '12-alpine')
       .withEnv('POSTGRES_USER', databaseConnectionDetails.user)
       .withEnv('POSTGRES_PASSWORD', databaseConnectionDetails.password)
       .withExposedPorts(databaseConnectionDetails.port)
@@ -29,7 +29,8 @@ describe('Given a configured PostgreSQLStorageEngine', () => {
 
   describe('When a new database needs to be prepared', () => {
     it('It should initialize without any issues', async () => {
-      await expect(engine.initialise()).resolves.not.toBeUndefined()
+      const initializedEngine = await engine.initialise()
+      expect(initializedEngine).toBeDefined()
     })
   })
   afterAll(async () => {

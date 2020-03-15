@@ -3,50 +3,60 @@ import { v4 as newGuid } from 'uuid'
 
 import { PostgreSQLStorageEngine } from '../src/PostgreSQLStorageEngine'
 import { StartedTestContainer } from 'testcontainers/dist/test-container'
-import { EventStorage, EventStore, EventData } from '@make-stuff-work/event-sauced'
+import { EventStore, EventData } from '@make-stuff-work/event-sauced'
 import { OrderCreated } from './Events/OrderCreated'
+import { getSingleEventById } from './helpers'
 
 const databaseConnectionDetails = {
   user: 'integration_testing',
-  database: 'postgres',
+  database: 'integration_testing',
   password: '2fe62e24-fb14-41d4-be56-afbce0cd3f04',
   port: 5432
 }
 
-describe('Given a initalized PostgreSQLStorageEngine', () => {
+describe('Given a initialised PostgreSQLStorageEngine', () => {
   let establishedContainer: StartedTestContainer
   let engine: PostgreSQLStorageEngine
   let store: EventStore
+  let getEventByEventId: (query: string) => Promise<any>
 
   beforeAll(async () => {
-    // create container
-    establishedContainer = await new GenericContainer('postgres', '11-alpine')
+    establishedContainer = await new GenericContainer('postgres', '12-alpine')
       .withEnv('POSTGRES_USER', databaseConnectionDetails.user)
       .withEnv('POSTGRES_PASSWORD', databaseConnectionDetails.password)
       .withExposedPorts(databaseConnectionDetails.port)
       .start()
 
-    engine = new PostgreSQLStorageEngine({
+    const updatedConnectionDetails = {
       ...databaseConnectionDetails,
       port: establishedContainer.getMappedPort(databaseConnectionDetails.port)
-    })
+    }
+
+    engine = new PostgreSQLStorageEngine(updatedConnectionDetails)
+
+    getEventByEventId = getSingleEventById(updatedConnectionDetails)
 
     await engine.initialise()
     store = new EventStore(engine)
   })
   describe('When appending to a new stream', () => {
-    it.skip('It should save the event', async () => {
+    it('It should save the event', async done => {
       const streamId = newGuid()
-      const event = new EventData(newGuid(), new OrderCreated(streamId))
+      const eventBody = new OrderCreated(streamId)
+      const event = new EventData(newGuid(), eventBody)
 
       await store.AppendToStream(streamId, 0, event)
 
-      const stream = await store.readStreamForwards(streamId)
-      expect(stream.length).toEqual(1)
-      const savedEvent = stream[0]
-      expect(savedEvent.streamId).toEqual(streamId)
-      expect(savedEvent.eventId).toEqual(event.eventId)
-      expect(savedEvent.eventNumber).toEqual(1)
+      const savedEvent = await getEventByEventId(
+        `SELECT * FROM eventstore.commits where event_id='${event.eventId}' LIMIT 1;`
+      )
+      expect(savedEvent.stream_id).toBeDefined()
+      expect(savedEvent.stream_id).toBe(streamId)
+      expect(savedEvent.event_id).toBeDefined()
+      expect(savedEvent.event_id).toBe(event.eventId)
+      expect(savedEvent.event_body).toEqual(eventBody)
+
+      done()
     })
   })
 
