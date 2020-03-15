@@ -35,7 +35,7 @@ describe('Given a initalized PostgreSQLStorageEngine', () => {
     store = new EventStore(engine)
   })
   describe('When appending to a new stream', () => {
-    it('It should save the event', async () => {
+    it.skip('It should save the event', async () => {
       const streamId = newGuid()
       const event = new EventData(newGuid(), new OrderCreated(streamId))
 
