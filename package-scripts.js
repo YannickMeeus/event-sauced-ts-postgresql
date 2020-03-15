@@ -29,7 +29,7 @@ module.exports = {
     },
     default: 'rollup -c rollup.config.ts -w',
     test: {
-      default: 'jest',
+      default: 'jest -runInBand',
       watch: 'jest --watch'
     },
     maintenance: {

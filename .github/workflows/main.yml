@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Print GitHub Context # Debug step
         if: true == false
@@ -24,7 +24,7 @@ jobs:
       - name: Set Node LTS
         uses: actions/setup-node@master
         with:
-          version: 10.x
+          node-version: 10.x
 
       - name: Pull the relevant docker images
         run: docker pull postgres:11-alpine
