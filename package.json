@@ -92,7 +92,7 @@
     "@types/uuid": "7.0.3",
     "colors": "1.4.0",
     "commitizen": "4.0.4",
-    "coveralls": "3.0.14",
+    "coveralls": "3.1.0",
     "cross-env": "7.0.2",
     "cz-conventional-changelog": "3.1.0",
     "event-stream": "4.0.1",
