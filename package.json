@@ -117,7 +117,7 @@
     "testcontainers": "2.8.0",
     "ts-jest": "24.3.0",
     "ts-node": "8.9.1",
-    "tslint": "6.1.1",
+    "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
     "tslint-config-standard": "9.0.0",
     "typescript": "3.8.3",
