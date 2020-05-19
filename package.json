@@ -120,7 +120,7 @@
     "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
     "tslint-config-standard": "9.0.0",
-    "typescript": "3.9.2",
+    "typescript": "3.9.3",
     "uuid": "7.0.3",
     "validate-commit-msg": "2.14.0"
   },
