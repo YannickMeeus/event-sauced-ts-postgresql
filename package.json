@@ -113,7 +113,7 @@
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-sourcemaps": "0.6.2",
     "rollup-plugin-typescript2": "0.27.1",
-    "semantic-release": "17.0.7",
+    "semantic-release": "17.0.8",
     "testcontainers": "2.8.2",
     "ts-jest": "24.3.0",
     "ts-node": "8.10.1",
