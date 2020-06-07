@@ -29,7 +29,7 @@ module.exports = {
     },
     default: 'rollup -c rollup.config.ts -w',
     test: {
-      default: 'jest -runInBand --forceExit --detectOpenHandles',
+      default: 'jest -runInBand --forceExit --detectOpenHandles --verbose',
       watch: 'jest --watch'
     },
     maintenance: {
