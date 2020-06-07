@@ -18,7 +18,7 @@ describe('Given a initialised PostgreSQLStorageEngine', () => {
     store = new EventStore(engine)
   })
   describe('When appending to a new stream', () => {
-    it('It should save the event', async done => {
+    it('It should save the event', async (done) => {
       const streamId = newGuid()
       const eventBody = new OrderCreated(streamId)
       const event = new EventData(newGuid(), eventBody)
@@ -35,6 +35,21 @@ describe('Given a initialised PostgreSQLStorageEngine', () => {
       expect(savedEvent.event_body).toEqual(eventBody)
 
       done()
+    })
+    it.todo('It should save the metadata for the event')
+    describe('And we have multiple events to save', () => {
+      it.todo('It should save both events')
+      it.todo('It should save the events in the right order')
+    })
+    describe('And we try to persist the new event with an unexpected version', () => {
+      it.todo('It should throw a concurrency error with revision number: blah')
+    })
+  })
+
+  describe('When appending to an existing stream', () => {
+    it.todo('It should save the new event')
+    describe('And we try to persist the new event with an unexpected version', () => {
+      it.todo('It should throw a concurrency error with revision number: blah')
     })
   })
 
