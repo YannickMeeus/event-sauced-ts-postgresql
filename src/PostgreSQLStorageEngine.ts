@@ -2,7 +2,7 @@ import { EventStorage, IStorageEngine } from '@make-stuff-work/event-sauced'
 import { Pool, PoolConfig } from 'pg'
 
 // Masking this so users do not need to take an import dependency on 'pg'
-interface PostgreSQLStorageEngineOptions extends PoolConfig {
+export interface PostgreSQLStorageEngineOptions extends PoolConfig {
   schema?: string
 }
 

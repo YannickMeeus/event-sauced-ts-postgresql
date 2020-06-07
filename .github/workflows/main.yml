@@ -12,22 +12,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      # from https://github.com/actions/example-services/blob/master/.github/workflows/postgres-service.yml
+      postgres:
+        image: postgres:12-alpine
+        env:
+          POSTGRES_USER: "integration_testing"
+          POSTGRES_PASSWORD: "2fe62e24-fb14-41d4-be56-afbce0cd3f04"
+          POSTGRES_DB: "postgres"
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
       - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
 
       - name: Print GitHub Context # Debug step
         if: true == false
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-
-      - name: Set Node LTS
-        uses: actions/setup-node@master
-        with:
-          node-version: 10.x
-
-      - name: Pull the relevant docker images
-        run: docker pull postgres:11-alpine
 
       - name: Install all dependencies
         run: npm ci
