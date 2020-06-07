@@ -90,7 +90,7 @@
     "@types/node": "12.12.42",
     "@types/pg": "7.14.3",
     "@types/uuid": "7.0.4",
-    "async-main": "^1.0.2",
+    "async-main": "1.0.2",
     "colors": "1.4.0",
     "commitizen": "4.1.2",
     "coveralls": "3.1.0",
