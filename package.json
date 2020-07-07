@@ -85,7 +85,7 @@
     "pg": "8.2.1"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "8.3.4",
+    "@commitlint/config-conventional": "9.0.1",
     "@types/jest": "26.0.4",
     "@types/node": "12.12.48",
     "@types/pg": "7.14.3",
