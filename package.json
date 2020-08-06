@@ -87,7 +87,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "9.1.1",
     "@types/jest": "26.0.9",
-    "@types/node": "12.12.53",
+    "@types/node": "12.12.54",
     "@types/pg": "7.14.4",
     "@types/uuid": "8.0.1",
     "async-main": "1.0.2",
