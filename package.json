@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "@make-stuff-work/event-sauced": "^1.1.2",
-    "pg": "8.3.0"
+    "pg": "8.3.2"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "9.1.2",
