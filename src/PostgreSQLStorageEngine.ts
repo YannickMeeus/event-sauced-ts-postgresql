@@ -1,4 +1,4 @@
-import { EventStorage, IStorageEngine } from '@make-stuff-work/event-sauced'
+import { EventStorage, IStorageEngine } from '@silly-goose-software/event-sauced-ts'
 import { Pool, PoolConfig } from 'pg'
 
 // Masking this so users do not need to take an import dependency on 'pg'
@@ -12,9 +12,12 @@ class PostgreSQLStorageEngine implements IStorageEngine {
   constructor(private readonly options: PostgreSQLStorageEngineOptions) {
     this.pool = new Pool(this.options)
   }
+  deleteStream(_streamId: string): Promise<void> {
+    throw new Error('Method not implemented.')
+  }
 
   public async initialise(): Promise<IStorageEngine> {
-    // TODO: Log line here to indicate initialisation started
+    // TODO: Log line here to indicate initialization started
     const schemaName = this.currentSchema()
     const schemaQuery = `CREATE SCHEMA IF NOT EXISTS ${schemaName};`
     const schema = schemaName + '.'
@@ -69,9 +72,9 @@ COMMIT;
     await this.pool.query(templateQuery, parameters)
   }
   public readStreamForwards(
-    streamId: string,
-    startPosition: number,
-    numberOfEvents: number
+    _streamId: string,
+    _startPosition: number,
+    _numberOfEvents: number
   ): Promise<EventStorage[]> {
     throw new Error('Method not implemented.')
   }
