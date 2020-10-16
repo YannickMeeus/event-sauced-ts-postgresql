@@ -1,5 +1,6 @@
 import { EventStorage, IStorageEngine } from '@silly-goose-software/event-sauced-ts'
 import { Pool, PoolConfig } from 'pg'
+import { ConcurrencyError } from './exceptions/ConcurrencyError'
 
 // Masking this so users do not need to take an import dependency on 'pg'
 export interface PostgreSQLStorageEngineOptions extends PoolConfig {
@@ -50,7 +51,6 @@ COMMIT;
   public async appendToStream(streamId: string, events: EventStorage[]): Promise<void> {
     const schemaName = this.currentSchema() // This is a bit dirty...
     const schema = schemaName + '.'
-    const event = events.pop()!
     const templateQuery = `
       INSERT INTO ${schema}commits (
         stream_id,
@@ -58,18 +58,45 @@ COMMIT;
         event_number,
         meta_data,
         event_body
-      ) VALUES (
-        $1,
-        $2,
-        $3,
-        $4,
-        $5
-      )
+      ) VALUES
+        ${this.expand(events.length, 5)}
+
     `
 
-    const parameters = [streamId, event.eventId, event.eventNumber, event.metaData, event.eventBody]
+    const parameters = events
+      .map((event) => [streamId, event.eventId, event.eventNumber, event.metaData, event.eventBody])
+      .flat()
+
     // TODO: Log line to say event with id foo and stream id blah has been written successfully.
-    await this.pool.query(templateQuery, parameters)
+    try {
+      await this.pool.query(templateQuery, parameters)
+    } catch (e) {
+      const CONCURRENCY_ERROR_CODE = '23505'
+      if (e.code === CONCURRENCY_ERROR_CODE) {
+        const parsedDetails = e.detail.match(/=\((.*)\)/)
+        if (parsedDetails) {
+          const [streamId, offendingEventNumber] = parsedDetails[1]
+            .split(',')
+            .map((s: string) => s.trim())
+          throw new ConcurrencyError(
+            streamId,
+            events.map((s) => s.eventId).join(', '),
+            offendingEventNumber
+          )
+        } else {
+          // Could not extract specifics for some reason, so going to just throw a more generic version of the concurrency error.
+          throw new ConcurrencyError(
+            streamId,
+            events.map((s) => s.eventId).join(', '),
+            events.map((s) => s.eventNumber).join(', ')
+          )
+        }
+      } else {
+        // Unknown Error
+        // This needs a test as well
+        throw e
+      }
+    }
   }
   public readStreamForwards(
     _streamId: string,
@@ -81,6 +108,20 @@ COMMIT;
 
   private currentSchema(): string {
     return this.options.schema ? `${this.options.schema}` : 'eventstore'
+  }
+
+  private expand(rowCount: number, columnCount: number, startAt = 1) {
+    let index = startAt
+    return Array(rowCount)
+      .fill(0)
+      .map(
+        () =>
+          `(${Array(columnCount)
+            .fill(0)
+            .map(() => `$${index++}`)
+            .join(', ')})`
+      )
+      .join(', ')
   }
 }
 

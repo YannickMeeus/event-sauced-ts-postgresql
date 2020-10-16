@@ -17,9 +17,9 @@ jobs:
       postgres:
         image: postgres:12-alpine
         env:
-          POSTGRES_USER: "integration_testing"
-          POSTGRES_PASSWORD: "2fe62e24-fb14-41d4-be56-afbce0cd3f04"
-          POSTGRES_DB: "postgres"
+          POSTGRES_USER: 'integration_testing'
+          POSTGRES_PASSWORD: 'admin'
+          POSTGRES_DB: 'postgres'
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck

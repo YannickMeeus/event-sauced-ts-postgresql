@@ -27,8 +27,6 @@
     "start": "nps",
     "test": "nps test",
     "commit": "git-cz",
-    "up": "nps database",
-    "down": "nps database.teardown",
     "console": "open http://localhost:8080",
     "semantic-release": "semantic-release"
   },
@@ -66,10 +64,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 90,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
+        "branches": 50,
+        "functions": 50,
+        "lines": 90,
+        "statements": 90
       }
     },
     "collectCoverage": false

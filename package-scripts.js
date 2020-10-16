@@ -10,10 +10,6 @@ module.exports = {
       },
       build: 'rimraf dist'
     },
-    database: {
-      default: 'docker-compose up -d',
-      teardown: 'docker-compose down -v'
-    },
     build: {
       default: series('build.transpile', 'build.package'),
       transpile: 'tsc --module commonjs',
@@ -33,7 +29,7 @@ module.exports = {
     default: 'rollup -c rollup.config.ts -w',
     test: {
       default: 'jest -runInBand --forceExit --detectOpenHandles --verbose',
-      watch: 'jest --watch'
+      watch: 'jest -runInBand --forceExit --detectOpenHandles --verbose --watch'
     },
     maintenance: {
       default: series('maintenance.update_dependencies'),
