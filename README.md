@@ -24,7 +24,7 @@ It is fun, there's a bunch of goodies to be had for free, and it keeps stuff wel
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 I'm using a combination of [Prettier](https://prettier.io/), [Husky](https://github.com/typicode/husky),
-[Lint-Staged](https://github.com/okonet/lint-staged) and finally [TSLint](https://palantir.github.io/tslint/).
+[Lint-Staged](https://github.com/okonet/lint-staged) and finally [ESLINT].
 
 It's a set-up that I'm borrowing from [Alex Jover](https://github.com/alexjoverm)'s amazing
 [Typescript Library Starter](https://github.com/alexjoverm/typescript-library-starter), and it's working a treat.
