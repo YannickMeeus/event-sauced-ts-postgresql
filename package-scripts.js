@@ -4,12 +4,15 @@ module.exports = {
   scripts: {
     prerequisites: {
       default: concurrently('prerequisites.lint', 'prerequisites.build'),
-      lint: "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts' -p .",
+      lint: {
+        default: "eslint 'src/**/*.ts' 'test/**/*.ts'",
+        fix: "eslint 'src/**/*.*' 'test/**/*.*' --fix"
+      },
       build: 'rimraf dist'
     },
     database: {
-      default: 'docker-compose -f ./tools/postgres-compose.yml up',
-      teardown: 'docker-compose -f ./tools/postgres-compose.yml down'
+      default: 'docker-compose up -d',
+      teardown: 'docker-compose down -v'
     },
     build: {
       default: series('build.transpile', 'build.package'),

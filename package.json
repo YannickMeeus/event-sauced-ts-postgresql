@@ -1,5 +1,5 @@
 {
-  "name": "event-sauced-postgresql",
+  "name": "@silly-goose-software/event-sauced-postgresql",
   "version": "0.0.0-development",
   "description": "",
   "keywords": [
@@ -8,7 +8,8 @@
     "CQRS",
     "Command",
     "Query",
-    "Multi-database"
+    "Multi-database",
+    "PostgreSQL"
   ],
   "main": "dist/event-sauced-postgresql.umd.js",
   "module": "dist/event-sauced-postgresql.es5.js",
@@ -19,19 +20,21 @@
   "author": "Yannick Meeus <yannick.meeus@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YannickMeeus/event-sauced-ts-postgresql"
+    "url": "https://github.com/Silly-Goose-Software/event-sauced-ts-postgresql"
   },
   "license": "MIT",
   "scripts": {
     "start": "nps",
     "test": "nps test",
     "commit": "git-cz",
+    "up": "nps database",
+    "down": "nps database.teardown",
+    "console": "open http://localhost:8080",
     "semantic-release": "semantic-release"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "publishConfig": {
@@ -81,20 +84,28 @@
     ]
   },
   "dependencies": {
-    "@make-stuff-work/event-sauced": "^1.1.2",
+    "@silly-goose-software/event-sauced-ts": "^1.0.2",
     "pg": "8.3.3"
   },
   "devDependencies": {
+    "@jedmao/semantic-release-npm-github-config": "^1.0.9",
     "@commitlint/config-conventional": "9.1.2",
     "@types/jest": "26.0.10",
     "@types/node": "12.12.54",
     "@types/pg": "7.14.4",
     "@types/uuid": "8.3.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
     "async-main": "1.0.2",
     "colors": "1.4.0",
     "commitizen": "4.2.1",
     "coveralls": "3.1.0",
     "cross-env": "7.0.2",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsdoc": "^30.3.0",
+    "eslint-plugin-node": "^11.1.0",
     "cz-conventional-changelog": "3.3.0",
     "event-stream": "4.0.1",
     "husky": "4.2.5",
@@ -118,9 +129,6 @@
     "testcontainers": "3.4.0",
     "ts-jest": "26.3.0",
     "ts-node": "9.0.0",
-    "tslint": "6.1.3",
-    "tslint-config-prettier": "1.18.0",
-    "tslint-config-standard": "9.0.0",
     "typescript": "4.0.2",
     "uuid": "8.3.0",
     "validate-commit-msg": "2.14.0"
