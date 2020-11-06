@@ -38,10 +38,12 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
+      - uses: jgierer12/npm-auth-gpr@v1
+        with:
+          token: ${{ secrets.READ_TOKEN }}
+
       - name: Install all dependencies
         run: npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PACKAGE_READ_TOKEN_PAT }}
 
       - name: Run linter
         run: npm start prerequisites.lint

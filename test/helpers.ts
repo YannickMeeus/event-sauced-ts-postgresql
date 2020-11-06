@@ -1,4 +1,4 @@
-import { EventData } from '@make-stuff-work/event-sauced'
+import { EventData } from '@silly-goose-software/event-sauced-ts'
 import { Client } from 'pg'
 import { PostgreSQLStorageEngineOptions } from '../src/PostgreSQLStorageEngine'
 
@@ -16,7 +16,7 @@ const databaseConnectionDetails: PostgreSQLStorageEngineOptions = {
   database: 'postgres',
   password: '2fe62e24-fb14-41d4-be56-afbce0cd3f04',
   port: 5432,
-  host: 'localhost'
+  host: 'localhost',
 }
 
 export { getSingleEventById, databaseConnectionDetails }

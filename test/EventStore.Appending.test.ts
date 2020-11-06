@@ -1,7 +1,7 @@
+import { EventData, EventStore } from '@silly-goose-software/event-sauced-ts'
 import { v4 as newGuid } from 'uuid'
 
 import { PostgreSQLStorageEngine } from '../src/PostgreSQLStorageEngine'
-import { EventStore, EventData } from '@make-stuff-work/event-sauced'
 import { OrderCreated } from './Events/OrderCreated'
 import { databaseConnectionDetails, getSingleEventById } from './helpers'
 
@@ -23,7 +23,7 @@ describe('Given a initialised PostgreSQLStorageEngine', () => {
       const eventBody = new OrderCreated(streamId)
       const event = new EventData(newGuid(), eventBody)
 
-      await store.AppendToStream(streamId, 0, event)
+      await store.appendToStream(streamId, 0, event)
 
       const savedEvent = await getEventByEventId(
         `SELECT * FROM eventstore.commits where event_id='${event.eventId}' LIMIT 1;`

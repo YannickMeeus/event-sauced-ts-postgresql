@@ -11,8 +11,8 @@ module.exports = {
       build: 'rimraf dist'
     },
     database: {
-      default: 'docker-compose -f ./tools/postgres-compose.yml up',
-      teardown: 'docker-compose -f ./tools/postgres-compose.yml down'
+      default: 'docker-compose up -d',
+      teardown: 'docker-compose down -v'
     },
     build: {
       default: series('build.transpile', 'build.package'),

@@ -1,9 +1,9 @@
-import { EventStore, EventData } from '@make-stuff-work/event-sauced'
 import { PostgreSQLStorageEngine } from '../src/PostgreSQLStorageEngine'
 import { OrderCreated } from './Events/OrderCreated'
 import { v4 } from 'uuid'
 
 import main from 'async-main'
+import { EventStore, EventData } from '@silly-goose-software/event-sauced-ts'
 
 const databaseConnectionDetails = {
   user: 'integration_testing',
@@ -27,5 +27,5 @@ const eventData = new EventData(v4(), eventToSave)
 
 main(async () => {
   await engine.initialise()
-  await store.AppendToStream(streamId, 0, eventData)
+  await store.appendToStream(streamId, 0, eventData)
 })
