@@ -40,7 +40,7 @@ jobs:
 
       - uses: jgierer12/npm-auth-gpr@v1
         with:
-          token: ${{ secrets.READ_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install all dependencies
         run: npm ci
@@ -61,5 +61,5 @@ jobs:
         if: endsWith(github.ref, 'master')
         run: npm start publish.ciDryrun
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
